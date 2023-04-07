@@ -41,6 +41,9 @@ namespace WindowsFormsAppMVP.Views
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CustomerId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,9 +54,7 @@ namespace WindowsFormsAppMVP.Views
             this.label4 = new System.Windows.Forms.Label();
             this.CustomerName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.CustomerId = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControlDetail.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -63,6 +64,7 @@ namespace WindowsFormsAppMVP.Views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -107,9 +109,11 @@ namespace WindowsFormsAppMVP.Views
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lista";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // button4
             // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Location = new System.Drawing.Point(673, 163);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(85, 31);
@@ -119,6 +123,7 @@ namespace WindowsFormsAppMVP.Views
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(673, 124);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(85, 33);
@@ -128,6 +133,7 @@ namespace WindowsFormsAppMVP.Views
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(673, 85);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 33);
@@ -137,6 +143,9 @@ namespace WindowsFormsAppMVP.Views
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 85);
             this.dataGridView1.Name = "dataGridView1";
@@ -147,6 +156,7 @@ namespace WindowsFormsAppMVP.Views
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Location = new System.Drawing.Point(555, 39);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(86, 31);
@@ -157,6 +167,8 @@ namespace WindowsFormsAppMVP.Views
             // 
             // txtSearch
             // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(13, 39);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(532, 22);
@@ -194,6 +206,33 @@ namespace WindowsFormsAppMVP.Views
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Detalle";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.Location = new System.Drawing.Point(20, 47);
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.Size = new System.Drawing.Size(66, 22);
+            this.CustomerId.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(418, 208);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 18);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Estado";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(224, 208);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 18);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Tipo";
             // 
             // button6
             // 
@@ -283,32 +322,14 @@ namespace WindowsFormsAppMVP.Views
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre";
             // 
-            // label7
+            // btnClose
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(224, 208);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 18);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Tipo";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(418, 208);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 18);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Estado";
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.Location = new System.Drawing.Point(20, 47);
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.Size = new System.Drawing.Size(66, 22);
-            this.CustomerId.TabIndex = 16;
+            this.btnClose.Location = new System.Drawing.Point(763, 14);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(25, 23);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // CustomerView
             // 
@@ -357,5 +378,6 @@ namespace WindowsFormsAppMVP.Views
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox CustomerId;
+        private System.Windows.Forms.Button btnClose;
     }
 }

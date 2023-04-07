@@ -22,9 +22,8 @@ namespace WindowsFormsAppMVP
             Application.SetCompatibleTextRenderingDefault(false);
 
             string sqlConnectionString = "";
-            ICustomerView view = new CustomerView();
-            ICustomerRepository repository = new CustomerRepository(sqlConnectionString);
-            new CustomerPresentor(view, repository);
+            IMainView view = new MainView();
+            new MainPresenter(view, sqlConnectionString);
             Application.Run((Form)view);
         }
     }

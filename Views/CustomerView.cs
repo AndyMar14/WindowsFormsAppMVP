@@ -21,7 +21,7 @@ namespace WindowsFormsAppMVP.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControlDetail.TabPages.Remove(tabPage2);
-            // btnClose.Click += delegate { this.Close(); };
+            btnClose.Click += delegate { this.Close(); };
         }
         private void AssociateAndRaiseViewEvents()
         {
@@ -91,6 +91,30 @@ namespace WindowsFormsAppMVP.Views
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        //Singleton pattern (Open a single form instance)
+        private static CustomerView instance;
+        public static CustomerView GetInstace(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CustomerView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
     }
 }
