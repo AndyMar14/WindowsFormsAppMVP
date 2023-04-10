@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,18 +48,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\CustomerListResponse.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\IGenericView.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\CustomerTypeModel.cs" />
     <Compile Include="Models\ICustomerRepository.cs" />
+    <Compile Include="Models\ICustomerTypeRepository.cs" />
+    <Compile Include="Presenters\Common\ModelDataValidation.cs" />
     <Compile Include="Presenters\CustomerPresentor.cs" />
+    <Compile Include="Presenters\CustomerTypePresentor.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\CustomerTypeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerTypeView.Designer.cs">
+      <DependentUpon>CustomerTypeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomerView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\CustomerView.Designer.cs">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ICustomerTypeView.cs" />
     <Compile Include="Views\ICustomerView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="Views\MainView.cs">
@@ -69,6 +84,7 @@
     </Compile>
     <Compile Include="_Repositories\BaseRepository.cs" />
     <Compile Include="_Repositories\CustomerRepository.cs" />
+    <Compile Include="_Repositories\CustomerTypeRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,6 +94,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CustomerTypeView.resx">
+      <DependentUpon>CustomerTypeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerView.resx">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>

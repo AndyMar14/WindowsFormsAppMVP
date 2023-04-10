@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsAppMVP.Models;
 using WindowsFormsAppMVP.Views;
+using System.Data;
+using WindowsFormsAppMVP.Dtos;
 
 namespace WindowsFormsAppMVP.Presenters
 {
@@ -16,6 +18,7 @@ namespace WindowsFormsAppMVP.Presenters
         private ICustomerRepository repository;
         private BindingSource customersBindingSource;
         private IEnumerable<CustomerModel> customerList;
+
         //Constructor
         public CustomerPresentor(ICustomerView view, ICustomerRepository repository)
         {
@@ -29,6 +32,7 @@ namespace WindowsFormsAppMVP.Presenters
             this.view.DeleteEvent += DeleteSelectedCustomer;
             this.view.SaveEvent += SaveCustomer;
             this.view.CancelEvent += CancelAction;
+            this.view.ViewLoad += ViewLoadAction;
             //Set customers bindind source
             this.view.SetCustomerListBindingSource(customersBindingSource);
             //Load customer list view
@@ -39,8 +43,9 @@ namespace WindowsFormsAppMVP.Presenters
         //Methods
         private void LoadAllCustomerList()
         {
-            customerList = repository.GetAll();
-            customersBindingSource.DataSource = customerList;//Set data source.
+            var customers = repository.GetAll();
+            List<CustomerListResponse> customersList = customers.Select(x => new CustomerListResponse() { Id = x.Id, CustName = x.CustName, Adress = x.Adress,CustomerType = x.CustomerType,Status = x.Status }).ToList();
+            customersBindingSource.DataSource = customersList;//Set data source.
         }
         private void SearchCustomer(object sender, EventArgs e)
         {
@@ -48,27 +53,101 @@ namespace WindowsFormsAppMVP.Presenters
             if (emptyValue == false)
                 customerList = repository.GetByValue(this.view.SearchValue);
             else customerList = repository.GetAll();
-            customersBindingSource.DataSource = customerList;
+
+            List<CustomerListResponse> customersList = customerList.Select(x => new CustomerListResponse() { Id = x.Id, CustName = x.CustName, Adress = x.Adress, CustomerType = x.CustomerType, Status = x.Status }).ToList();
+            customersBindingSource.DataSource = customersList;
         }
+        private void CleanviewFields()
+        {
+            view.Id = "0";
+            view.CustName = "";
+            view.Adress = "";
+        }
+
         private void CancelAction(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanviewFields();  
+        }
+        private void ViewLoadAction(object sender, EventArgs e)
+        {
+            var customerTypeList = repository.GetAllTypes();
+            view.CustomerTypeList = customerTypeList;
         }
         private void SaveCustomer(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var model = new CustomerModel();
+            model.Id = Convert.ToInt32(view.Id);
+            model.CustName = view.CustName;
+            model.Adress = view.Adress;
+            model.CustomerType = view.CustomerTypeId.ToString();
+            if (view.Status == 1)
+            {
+                model.Status = "0";
+            }
+            else
+            {
+                model.Status = "1";
+            }
+            try
+            {
+                new Common.ModelDataValidation().Validate(model);
+                if (view.IsEdit)//Edit model
+                {
+                    repository.Edit(model);
+                    view.Message = "Customer edited successfuly";
+                }
+                else //Add new model
+                {
+                    repository.Add(model);
+                    view.Message = "Customer added sucessfully";
+                }
+                view.IsSuccessful = true;
+                LoadAllCustomerList();
+                CleanviewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
         }
         private void DeleteSelectedCustomer(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+        {
+            var customer = (CustomerModel)customersBindingSource.Current;
+            repository.Delete(customer.Id);
+            view.IsSuccessful = true;
+            view.Message = "Customer deleted successfully";
+            LoadAllCustomerList();
+        }
+        catch (Exception ex)
+        {
+            view.IsSuccessful = false;
+            view.Message = "An error ocurred, could not delete customer";
+        }
         }
         private void LoadSelectedCustomerToEdit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var customerSelected = (CustomerModel)customersBindingSource.Current;
+            var customerData = repository.GetByValue(customerSelected.Id.ToString());
+            view.Id = customerData.First().Id.ToString();
+            view.CustName = customerData.First().CustName;
+            view.Adress = customerData.First().Adress;
+            view.CustomerTypeId = Int32.Parse(customerData.First().CustomerTypeId);
+            if (customerData.First().Status == "Activo")
+            {
+                view.Status = 0;
+            }
+            else
+            {
+                view.Status = 1;
+            }
+            view.IsEdit = true;
         }
         private void AddNewCustomer(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
     }
 }

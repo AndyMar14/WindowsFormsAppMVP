@@ -16,9 +16,11 @@ namespace WindowsFormsAppMVP.Views
         {
             InitializeComponent();
             BtnCustomerView.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
+            BtnCustomerType.Click += delegate { ShowTypeView?.Invoke(this, EventArgs.Empty); };
         }
 
         public event EventHandler ShowCustomerView;
+        public event EventHandler ShowTypeView;
 
         private void MainView_Load(object sender, EventArgs e)
         {

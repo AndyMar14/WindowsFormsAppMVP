@@ -11,21 +11,17 @@ using WindowsFormsAppMVP.Models;
 
 namespace WindowsFormsAppMVP.Views
 {
-    public partial class CustomerView : Form,ICustomerView
+    public partial class CustomerTypeView : Form,ICustomerTypeView
     {
         private bool isSuccessful;
         private bool isEdit;
         private string message;
-        private IEnumerable<CustomerTypeModel> customerTypes;
-        public CustomerView()
+        public CustomerTypeView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControlDetail.TabPages.Remove(tabPage2);
             btnClose.Click += delegate { this.Close(); };
-            CustomerId.Text = "0";
-            CustomerType.DisplayMember = "Value";
-            CustomerType.ValueMember = "Key";
         }
         private void AssociateAndRaiseViewEvents()
         {
@@ -74,62 +70,6 @@ namespace WindowsFormsAppMVP.Views
 
         }
 
-        public string Id {
-            get { return CustomerId.Text; }
-            set { CustomerId.Text = value; }
-        }
-        public string CustName {
-            get { return CustomerName.Text; }
-            set { CustomerName.Text = value; }
-        }
-        public string Adress {
-            get { return CustomerAdress.Text; }
-            set { CustomerAdress.Text = value; }
-        }
-        public int CustomerTypeId {
-            get {
-                KeyValuePair<int, string> elementoSeleccionado = (KeyValuePair<int, string>)CustomerType.Items[CustomerType.SelectedIndex];
-                int idSeleccionado = elementoSeleccionado.Key;
-                return idSeleccionado;
-            }
-            set {
-                foreach (KeyValuePair<int, string> item in CustomerType.Items)
-                {
-                    if (item.Key == value)
-                    {
-                        CustomerType.SelectedItem = item;
-                        break;
-                    }
-                }
-            }
-        }
-        public int Status {
-            get { return CustomerStatus.SelectedIndex; }
-            set { CustomerStatus.SelectedIndex = value; }
-        }
-        public string SearchValue {
-            get { return txtSearch.Text; }
-            set { txtSearch.Text = value; }
-        }
-        public bool IsEdit {
-            get { return isEdit; }
-            set { isEdit = value; }
-        }
-        public bool IsSuccessful {
-            get { return isSuccessful; }
-            set { isSuccessful = value; }
-        }
-        public string Message {
-            get { return message; }
-            set { message = value; }
-        }
-
-        public IEnumerable<CustomerTypeModel> CustomerTypeList
-        {
-            get { return customerTypes; }
-            set { customerTypes = value; }
-        }
-
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditEvent;
@@ -138,32 +78,43 @@ namespace WindowsFormsAppMVP.Views
         public event EventHandler CancelEvent;
         public event EventHandler ViewLoad;
 
-        public void SetCustomerListBindingSource(BindingSource customerList)
+        public string Id
         {
-            dataGridView1.DataSource = customerList;
+            get { return CustomerTypeId.Text; }
+            set { CustomerTypeId.Text = value; }
+        }
+        public string Description {
+            get { return CustomerTypeDescription.Text; }
+            set { CustomerTypeDescription.Text = value; }
+        }
+        public string SearchValue
+        {
+            get { return txtSearch.Text; }
+            set { txtSearch.Text = value; }
+        }
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; }
+        }
+        public bool IsSuccessful
+        {
+            get { return isSuccessful; }
+            set { isSuccessful = value; }
+        }
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
         //Singleton pattern (Open a single form instance)
-        private static CustomerView instance;
-        public static CustomerView GetInstace(Form parentContainer)
+        private static CustomerTypeView instance;
+        public static CustomerTypeView GetInstace(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
             {
-                instance = new CustomerView();
+                instance = new CustomerTypeView();
                 instance.MdiParent = parentContainer;
                 instance.FormBorderStyle = FormBorderStyle.None;
                 instance.Dock = DockStyle.Fill;
@@ -176,25 +127,14 @@ namespace WindowsFormsAppMVP.Views
             }
             return instance;
         }
-
-        private void button6_Click(object sender, EventArgs e)
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
+        public void SetCustomerListBindingSource(BindingSource customerList)
         {
-
-        }
-
-        private void CustomerView_Load(object sender, EventArgs e)
-        {
-            ViewLoad?.Invoke(this, EventArgs.Empty);
-
-            foreach (CustomerTypeModel type in customerTypes)
-            {
-                CustomerType.Items.Add(new KeyValuePair<int, string>(type.Id, type.Description));
-            }
+            dataGridView1.DataSource = customerList;
         }
     }
 }

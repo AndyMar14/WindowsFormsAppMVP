@@ -7,8 +7,7 @@ using WindowsFormsAppMVP.Interfaces;
 
 namespace WindowsFormsAppMVP.Models
 {
-    public interface ICustomerRepository : IGenericRepository<CustomerModel>
+    public interface ICustomerTypeRepository : IGenericRepository<CustomerTypeModel>
     {
-        IEnumerable<CustomerTypeModel> GetAllTypes();
     }
 }

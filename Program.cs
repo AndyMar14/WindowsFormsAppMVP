@@ -7,7 +7,7 @@ using WindowsFormsAppMVP._Repositories;
 using WindowsFormsAppMVP.Models;
 using WindowsFormsAppMVP.Presenters;
 using WindowsFormsAppMVP.Views;
-
+using System.Configuration;
 namespace WindowsFormsAppMVP
 {
     static class Program
@@ -21,7 +21,7 @@ namespace WindowsFormsAppMVP
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string sqlConnectionString = "";
+            string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString; ;
             IMainView view = new MainView();
             new MainPresenter(view, sqlConnectionString);
             Application.Run((Form)view);

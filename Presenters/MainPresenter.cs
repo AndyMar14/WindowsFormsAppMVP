@@ -18,12 +18,19 @@ namespace WindowsFormsAppMVP.Presenters
             this.mainView = mainView;
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowCustomerView += ShowCustomerView;
+            this.mainView.ShowTypeView += ShowTypeView;
         }
         private void ShowCustomerView(object sender, EventArgs e)
         {
             ICustomerView view = CustomerView.GetInstace((MainView)mainView);
             ICustomerRepository repository = new CustomerRepository(sqlConnectionString);
             new CustomerPresentor(view, repository);
+        }
+        private void ShowTypeView(object sender, EventArgs e)
+        {
+            ICustomerTypeView view = CustomerTypeView.GetInstace((MainView)mainView);
+            ICustomerTypeRepository repository = new CustomerTypeRepository(sqlConnectionString);
+            new CustomerTypePresentor(view, repository);
         }
     }
 }

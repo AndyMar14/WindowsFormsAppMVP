@@ -31,16 +31,18 @@ namespace WindowsFormsAppMVP.Views
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnCustomerView = new System.Windows.Forms.Button();
+            this.BtnCustomerType = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnCustomerType);
             this.panel1.Controls.Add(this.BtnCustomerView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 450);
+            this.panel1.Size = new System.Drawing.Size(200, 576);
             this.panel1.TabIndex = 0;
             // 
             // BtnCustomerView
@@ -53,11 +55,21 @@ namespace WindowsFormsAppMVP.Views
             this.BtnCustomerView.Text = "Clientes";
             this.BtnCustomerView.UseVisualStyleBackColor = true;
             // 
+            // BtnCustomerType
+            // 
+            this.BtnCustomerType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCustomerType.Location = new System.Drawing.Point(3, 110);
+            this.BtnCustomerType.Name = "BtnCustomerType";
+            this.BtnCustomerType.Size = new System.Drawing.Size(194, 48);
+            this.BtnCustomerType.TabIndex = 1;
+            this.BtnCustomerType.Text = "Tipos de Clientes";
+            this.BtnCustomerType.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1280, 576);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
             this.Name = "MainView";
@@ -72,5 +84,6 @@ namespace WindowsFormsAppMVP.Views
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnCustomerView;
+        private System.Windows.Forms.Button BtnCustomerType;
     }
 }

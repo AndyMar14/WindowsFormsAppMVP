@@ -9,5 +9,6 @@ namespace WindowsFormsAppMVP.Views
     public interface IMainView
     {
         event EventHandler ShowCustomerView;
+        event EventHandler ShowTypeView;
     }
 }
