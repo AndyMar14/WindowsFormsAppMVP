@@ -55,9 +55,14 @@
     <Compile Include="Models\CustomerTypeModel.cs" />
     <Compile Include="Models\ICustomerRepository.cs" />
     <Compile Include="Models\ICustomerTypeRepository.cs" />
+    <Compile Include="Models\IInvoiceRepository.cs" />
+    <Compile Include="Models\InvoiceDetailModel.cs" />
+    <Compile Include="Models\InvoiceItemModel.cs" />
+    <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Presenters\Common\ModelDataValidation.cs" />
     <Compile Include="Presenters\CustomerPresentor.cs" />
     <Compile Include="Presenters\CustomerTypePresentor.cs" />
+    <Compile Include="Presenters\InvoicePresentor.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,7 +80,14 @@
     </Compile>
     <Compile Include="Views\ICustomerTypeView.cs" />
     <Compile Include="Views\ICustomerView.cs" />
+    <Compile Include="Views\IInvoiceView.cs" />
     <Compile Include="Views\IMainView.cs" />
+    <Compile Include="Views\InvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\InvoiceView.Designer.cs">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +97,7 @@
     <Compile Include="_Repositories\BaseRepository.cs" />
     <Compile Include="_Repositories\CustomerRepository.cs" />
     <Compile Include="_Repositories\CustomerTypeRepository.cs" />
+    <Compile Include="_Repositories\InvoiceRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerView.resx">
       <DependentUpon>CustomerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InvoiceView.resx">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

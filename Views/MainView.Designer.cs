@@ -30,40 +30,52 @@ namespace WindowsFormsAppMVP.Views
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BtnCustomerView = new System.Windows.Forms.Button();
+            this.BtnInvoice = new System.Windows.Forms.Button();
             this.BtnCustomerType = new System.Windows.Forms.Button();
+            this.BtnCustomerView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnInvoice);
             this.panel1.Controls.Add(this.BtnCustomerType);
             this.panel1.Controls.Add(this.BtnCustomerView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 576);
+            this.panel1.Size = new System.Drawing.Size(258, 576);
             this.panel1.TabIndex = 0;
             // 
-            // BtnCustomerView
+            // BtnInvoice
             // 
-            this.BtnCustomerView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCustomerView.Location = new System.Drawing.Point(3, 56);
-            this.BtnCustomerView.Name = "BtnCustomerView";
-            this.BtnCustomerView.Size = new System.Drawing.Size(194, 48);
-            this.BtnCustomerView.TabIndex = 0;
-            this.BtnCustomerView.Text = "Clientes";
-            this.BtnCustomerView.UseVisualStyleBackColor = true;
+            this.BtnInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnInvoice.Location = new System.Drawing.Point(3, 164);
+            this.BtnInvoice.Name = "BtnInvoice";
+            this.BtnInvoice.Size = new System.Drawing.Size(252, 48);
+            this.BtnInvoice.TabIndex = 2;
+            this.BtnInvoice.Text = "Facturas";
+            this.BtnInvoice.UseVisualStyleBackColor = true;
             // 
             // BtnCustomerType
             // 
             this.BtnCustomerType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCustomerType.Location = new System.Drawing.Point(3, 110);
             this.BtnCustomerType.Name = "BtnCustomerType";
-            this.BtnCustomerType.Size = new System.Drawing.Size(194, 48);
+            this.BtnCustomerType.Size = new System.Drawing.Size(252, 48);
             this.BtnCustomerType.TabIndex = 1;
             this.BtnCustomerType.Text = "Tipos de Clientes";
             this.BtnCustomerType.UseVisualStyleBackColor = true;
+            // 
+            // BtnCustomerView
+            // 
+            this.BtnCustomerView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCustomerView.Location = new System.Drawing.Point(3, 56);
+            this.BtnCustomerView.Name = "BtnCustomerView";
+            this.BtnCustomerView.Size = new System.Drawing.Size(252, 48);
+            this.BtnCustomerView.TabIndex = 0;
+            this.BtnCustomerView.Text = "Clientes";
+            this.BtnCustomerView.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -85,5 +97,6 @@ namespace WindowsFormsAppMVP.Views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnCustomerView;
         private System.Windows.Forms.Button BtnCustomerType;
+        private System.Windows.Forms.Button BtnInvoice;
     }
 }

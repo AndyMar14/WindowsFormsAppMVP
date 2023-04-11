@@ -19,6 +19,7 @@ namespace WindowsFormsAppMVP.Presenters
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowCustomerView += ShowCustomerView;
             this.mainView.ShowTypeView += ShowTypeView;
+            this.mainView.ShowInvoiceView += ShowInvoiceView;
         }
         private void ShowCustomerView(object sender, EventArgs e)
         {
@@ -31,6 +32,13 @@ namespace WindowsFormsAppMVP.Presenters
             ICustomerTypeView view = CustomerTypeView.GetInstace((MainView)mainView);
             ICustomerTypeRepository repository = new CustomerTypeRepository(sqlConnectionString);
             new CustomerTypePresentor(view, repository);
+        }
+
+        private void ShowInvoiceView(object sender, EventArgs e)
+        {
+            IInvoiceView view = InvoiceView.GetInstace((MainView)mainView);
+            IInvoiceRepository repository = new InvoiceRepository(sqlConnectionString);
+            new InvoicePresentor(view, repository);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace WindowsFormsAppMVP.Views
     {
         event EventHandler ShowCustomerView;
         event EventHandler ShowTypeView;
+        event EventHandler ShowInvoiceView;
     }
 }
