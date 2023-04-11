@@ -115,7 +115,7 @@ namespace WindowsFormsAppMVP.Presenters
         {
             try
         {
-            var customer = (CustomerModel)customersBindingSource.Current;
+            var customer = (CustomerListResponse)customersBindingSource.Current;
             repository.Delete(customer.Id);
             view.IsSuccessful = true;
             view.Message = "Customer deleted successfully";
@@ -129,7 +129,7 @@ namespace WindowsFormsAppMVP.Presenters
         }
         private void LoadSelectedCustomerToEdit(object sender, EventArgs e)
         {
-            var customerSelected = (CustomerModel)customersBindingSource.Current;
+            var customerSelected = (CustomerListResponse)customersBindingSource.Current;
             var customerData = repository.GetByValue(customerSelected.Id.ToString());
             view.Id = customerData.First().Id.ToString();
             view.CustName = customerData.First().CustName;

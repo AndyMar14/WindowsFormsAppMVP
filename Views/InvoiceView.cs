@@ -122,5 +122,10 @@ namespace WindowsFormsAppMVP.Views
         {
             DgvInvoiceDetail.DataSource = invoiceDetailList;
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

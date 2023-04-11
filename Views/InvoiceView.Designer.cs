@@ -323,7 +323,7 @@ namespace WindowsFormsAppMVP.Views
             // LbType
             // 
             this.LbType.AutoSize = true;
-            this.LbType.Location = new System.Drawing.Point(212, 102);
+            this.LbType.Location = new System.Drawing.Point(226, 104);
             this.LbType.Name = "LbType";
             this.LbType.Size = new System.Drawing.Size(0, 17);
             this.LbType.TabIndex = 5;
@@ -332,11 +332,12 @@ namespace WindowsFormsAppMVP.Views
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 95);
+            this.label8.Location = new System.Drawing.Point(18, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(192, 25);
             this.label8.TabIndex = 4;
             this.label8.Text = "Tipo de empleado:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // LbAdress
             // 

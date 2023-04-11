@@ -61,7 +61,14 @@ namespace WindowsFormsAppMVP.Presenters
             view.Id = invoiceData.First().Id.ToString();
             view.CustName = invoiceData.First().CustName;
             view.Adress = invoiceData.First().Adress;
-            view.Status = invoiceData.First().Status;
+            if (invoiceData.First().Status == "True")
+            {
+                view.Status = "Activo";
+            }
+            else
+            {
+                view.Status = "Inactivo";
+            }
             view.CustomerType = invoiceData.First().CustomerType;
 
             view.Total = invoiceData.First().Total;
